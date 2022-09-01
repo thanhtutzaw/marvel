@@ -9,9 +9,9 @@ export default function MovieList({ Movies }) {
         // console.log(m.title)
         // let title = m.title
         // let decode = decodeURIComponent(title.replace(/\+/g, ' '))
-
+        const url = decodeURIComponent(m.title.toLowerCase()).replace(/ /g, '-').replace(/[.,\/#!$%\^&\*;:{}=]/g, "")
         return (
-            <Link href={`movie/${m.id}`}>
+            <Link href={`movie/${url}`}  >
                 <a className={styles.card}>
                     <li className={styles.cardItems} key={m.id}>
                         <h3>{m.title}</h3>
@@ -27,7 +27,8 @@ export default function MovieList({ Movies }) {
     return (
         <ul className={styles.list}>
             {Movies.map((m) => (
-                <MoviesCard key={m.id} {...m} />
+                
+                <MoviesCard  key={m.id} {...m} />
             ))}
         </ul>
 
